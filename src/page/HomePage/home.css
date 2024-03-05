@@ -1,0 +1,27 @@
+.parent {
+    width: 100%;
+   display: flex;
+}
+
+.sidebar {
+    width: 20%;
+}
+
+.cardd {
+    width: 80%;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .parent{
+        display: block;
+    }
+    .cardd {
+        width: 100%;
+    }
+    .sidebar {
+        width: 98%;
+        margin: auto;
+    }
+}

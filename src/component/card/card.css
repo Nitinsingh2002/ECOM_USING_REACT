@@ -1,0 +1,90 @@
+.card_container {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap !important;
+    padding-bottom: 2rem;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: 76vh;
+    overflow-y: auto;
+
+}
+
+
+card_container::-webkit-scrollbar {
+    width: 0;
+}
+
+.card_container {
+    scrollbar-width: none;
+    /* Hide scrollbar for Firefox */
+}
+
+
+.card {
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgb(176, 175, 175);
+    width: 18rem !important;
+}
+
+.card_image {
+    height: 220px;
+    max-height: 220px;
+    padding: 1rem;
+
+}
+
+.title {
+    height: 50px;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 1485px) {
+    .card_container {
+        margin-top: 1rem;
+        width: 100%;
+        padding: 1rem 0.25rem 1rem 0.25rem;
+        margin-bottom: 1rem;
+    }
+
+    .card {
+        width: 24% !important;
+        margin: auto;
+        margin-bottom: 0.8rem;
+        box-shadow: 0 2px 4px rgb(113, 112, 112);
+    }
+
+}
+
+@media screen and (max-width: 1119px) {
+    .card_container {
+        margin-top: 1rem;
+        width: 100%;
+        padding: 1rem 0.25rem 1rem 0.25rem;
+    }
+
+    .card {
+        width: 32% !important;
+        margin: auto;
+        margin-bottom: 0.8rem;
+        box-shadow: 0 2px 4px rgb(113, 112, 112);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .card_container {
+      
+        width: 100%;
+        padding: 1rem 0.25rem 1rem 0.25rem;
+    }
+
+    .card {
+        width: 49% !important;
+        margin: auto;
+        margin-bottom: 0.5rem;
+        box-shadow: 0 2px 4px rgb(113, 112, 112);
+    }
+}
