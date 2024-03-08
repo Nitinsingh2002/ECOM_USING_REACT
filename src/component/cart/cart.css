@@ -1,0 +1,17 @@
+.table_conatiner{
+    padding: 2rem;
+}
+tfoot {
+   
+    margin-top: 1rem;
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  .empty{
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
