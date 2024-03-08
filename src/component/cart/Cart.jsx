@@ -26,12 +26,13 @@ function Cart() {
         <>
             {
                 cartItem.length > 0 ? (<div className="table_conatiner">
-                    <table className="table table-striped table-hover">
+                    <table className="table table-striped table-hover ">
                         <thead>
                             <tr>
                                 <th scope="col">Name</th>
                                 <th scope="col">Preview</th>
                                 <th scope="col">Price</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,20 +42,24 @@ function Cart() {
                                         <td>{truncateString(item.title, 25)}</td>
                                         <td><img src={item.image} style={{ height: "80px", width: "60px" }} /></td>
                                         <td>{item.price}</td>
+                                        <td> <span className="bi bi-trash text-danger "></span></td>
                                     </tr>
                                 ))
                             }
                         </tbody>
+
                         <tfoot >
-                        <tr className="text-center">
-                                <td className="fw-bold" colSpan="3">Total amount: 0</td>
+                            <tr className="text-center">
+                                <td className="fw-bold" colSpan="12">Total amount: 0</td>
                             </tr>
                             <tr className="text-center">
-                                <td className="fw-bold" colSpan="3">
+                                <td className="fw-bold" colSpan="12">
                                     <button className="btn btn-danger">Purchase</button>
                                 </td>
                             </tr>
                         </tfoot>
+
+
                     </table>
                 </div>
 

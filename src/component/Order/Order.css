@@ -1,0 +1,23 @@
+.indivisual_table {
+    width: 60%;
+    margin: auto;
+}
+
+.real_i_table {
+    margin-bottom: 5rem;
+}
+
+@media screen and (max-width: 1119px) {
+    .indivisual_table {
+        width: 80%;
+        margin: auto;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .indivisual_table {
+        width: 98%;
+        margin: auto;
+    }
+}
