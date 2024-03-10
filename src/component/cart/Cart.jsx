@@ -1,15 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import './cart.css'
+import { useValue } from "../../Ecom-context";
 
 function Cart() {
-    const [cartItem, setCartItem] = useState([])
 
-    function LoadCartData() {
-        axios.get("https://fakestoreapi.com/products?limit=5")
-            .then(res => setCartItem(res.data))
-            .catch(error => console.log("error in fetching data", error))
-    }
+    const { cartData, totalPrice,deleteCartData } = useValue();
+
 
     function truncateString(str, num) {
         if (str.length <= num) {
@@ -18,14 +15,12 @@ function Cart() {
         return str.slice(0, num) + '...';
     }
 
-    useEffect(() => {
-        LoadCartData();
-    }, [])
+
 
     return (
         <>
             {
-                cartItem.length > 0 ? (<div className="table_conatiner">
+                cartData.length > 0 ? (<div className="table_conatiner">
                     <table className="table table-striped table-hover ">
                         <thead>
                             <tr>
@@ -37,12 +32,12 @@ function Cart() {
                         </thead>
                         <tbody>
                             {
-                                cartItem.map((item, index) => (
+                                cartData.map((item, index) => (
                                     <tr key={index}>
                                         <td>{truncateString(item.title, 25)}</td>
                                         <td><img src={item.image} style={{ height: "80px", width: "60px" }} /></td>
                                         <td>{item.price}</td>
-                                        <td> <span className="bi bi-trash text-danger "></span></td>
+                                        <td> <span className="bi bi-trash text-danger " onClick={()=>{deleteCartData(index)}}></span></td>
                                     </tr>
                                 ))
                             }
@@ -50,7 +45,7 @@ function Cart() {
 
                         <tfoot >
                             <tr className="text-center">
-                                <td className="fw-bold" colSpan="12">Total amount: 0</td>
+                                <td className="fw-bold" colSpan="12">Total amount: {totalPrice}</td>
                             </tr>
                             <tr className="text-center">
                                 <td className="fw-bold" colSpan="12">
