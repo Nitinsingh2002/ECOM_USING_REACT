@@ -20,7 +20,8 @@ function Cart() {
     return (
         <>
             {
-                cartData.length > 0 ? (<div className="table_conatiner">
+                cartData.length > 0 ? (
+                <div className="table_conatiner table-responsive" >
                     <table className="table table-striped table-hover ">
                         <thead>
                             <tr>

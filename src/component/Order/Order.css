@@ -16,8 +16,12 @@
 
 
 @media screen and (max-width: 768px) {
+    .tabla{
+      width: 90% !important;
+    }
     .indivisual_table {
-        width: 98%;
+        width: 100%;
         margin: auto;
+
     }
 }
