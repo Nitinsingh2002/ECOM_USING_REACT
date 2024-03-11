@@ -1,10 +1,12 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './card.css'
 import { useValue } from "../../Ecom-context";
-
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 export const Cardd = () => {
 
@@ -31,10 +33,9 @@ export const Cardd = () => {
                                 </Card.Text>
                             </div>
 
-                            <Button variant="primary" className="w-100" onClick={() => { handleAddToCartClick(item.id) }}>
-                                <i className="bi bi-cart4 me-2" ></i>
-                                Add to cart
-                            </Button>
+
+                            <Button variant="contained" endIcon={<ShoppingCartOutlinedIcon />} className="w-100" onClick={() => { handleAddToCartClick(item.id) }}  >   Add to cart</Button>
+                
                         </Card.Body>
                     </Card>
 

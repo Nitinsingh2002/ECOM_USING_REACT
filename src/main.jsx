@@ -5,9 +5,9 @@ import { CustomEcomContext } from './Ecom-context.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+
     <CustomEcomContext>
       <App />
     </CustomEcomContext>
-  </React.StrictMode>,
+
 )

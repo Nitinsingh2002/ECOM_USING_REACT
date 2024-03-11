@@ -10,7 +10,13 @@
 .cardd {
     width: 80%;
 }
-
+.tspinner{
+width: 100%;
+height: 80vh;
+display: flex;
+justify-content: center;
+align-items: center;
+}
 
 
 @media screen and (max-width: 768px) {
