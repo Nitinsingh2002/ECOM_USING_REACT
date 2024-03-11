@@ -33,7 +33,7 @@ function CollapsibleNavbar() {
                                         <span className='bi bi-cart-dash me-1 fs-5'></span>
                                         Cart</Link>
                                 </Nav.Link>
-                                <Nav.Link>
+                                <Nav.Link className='d-none'>
                                     <span className='bi bi-box-arrow-right me-1 fs-5'></span>
                                     Logout
                                 </Nav.Link>

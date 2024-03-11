@@ -11,6 +11,8 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { NotFound } from './page/NotFound/notFound'
+import { Alert } from './component/alert/alert'
 
 
 
@@ -22,12 +24,16 @@ function App() {
     { path: "/order", element: <OrderPage /> },
     { path: "/cart", element: <CartPage /> },
     { path: "/signup", element: <SignUp /> },
-    { path: "/login", element: <Login /> }
+    { path: "/login", element: <Login /> },
+    { path: "*", element: <NotFound/> }
   ])
 
   return (
     <>
-      <RouterProvider router={router} />
+      <RouterProvider router={router}>
+       <Alert/>
+      </RouterProvider>
+     
     </>
   )
 }

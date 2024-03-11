@@ -17,6 +17,13 @@ export function CustomEcomContext({ children }) {
     const [totalPrice, setTotalPrice] = useState(0);
     const [orderData, setOrderData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [showModal, setShowModal] = useState(false);
+    const [modalBody, setModalBody] = useState('')
+    const [confirmType, setConfirmType] = useState(false)
+    const [deleteIndex, setDeleteIndex] = useState(null);
+    const [searchbarInput, setSerachBarInput] = useState("")
+
+
 
     function loadProductData() {
         axios.get('https://fakestoreapi.com/products').
@@ -39,6 +46,12 @@ export function CustomEcomContext({ children }) {
                     })
                 }
 
+                if (searchbarInput.length > 0) {
+                    filteredProduct = filteredProduct.filter((product) => {
+                        return product.title.toLowerCase().includes(searchbarInput);
+                    });
+                }
+
                 setTimeout(() => {
                     setLoading(false)
                     setData(filteredProduct)
@@ -48,6 +61,15 @@ export function CustomEcomContext({ children }) {
 
             .catch(error => console.log("error in fectching api : ", error)
             )
+    }
+console.log(searchbarInput.length)
+
+    function handleShowModal() {
+        setShowModal(true);
+    }
+
+    function handleCloseModal() {
+        setShowModal(false);
     }
 
 
@@ -79,7 +101,8 @@ export function CustomEcomContext({ children }) {
                 if (check) {
                     check.qty += 1;
                     setCartData([...cartData]);
-                    alert("Product added to cart");
+                    handleShowModal();
+                    setModalBody("Product added to cart")
                 } else {
                     const newDaata = {
                         id: res.data.id,
@@ -95,22 +118,29 @@ export function CustomEcomContext({ children }) {
 
                     }
                     setCartData([...cartData, newDaata]);
-                    alert("item is added to cart");
+                    handleShowModal();
+                    setModalBody("Product added to cart")
                 }
 
             });
+
     }
 
-    console.log("Itemm in cart", cartData)
-    function deleteCartData(index) {
 
-        const result = window.confirm("Are tou sure to delete this item from cart ?")
-        if (result) {
-            //state data is immutable so we can't perform splice direcly on cartData
-            const itemToBeDeleted = [...cartData];
-            itemToBeDeleted.splice(index, 1);
-            setCartData(itemToBeDeleted);
-        }
+    function handleConfirm() {
+        const itemToBeDeleted = [...cartData];
+        itemToBeDeleted.splice(deleteIndex, 1);
+        setCartData(itemToBeDeleted);
+        handleCloseModal();
+        setConfirmType(false)
+    }
+
+    function deleteCartData(index) {
+        setConfirmType(true);
+        setModalBody("Are tou sure to delete this item from cart ?");
+        handleShowModal();
+        setDeleteIndex(index);
+
     }
 
     function handleOrder() {
@@ -122,7 +152,8 @@ export function CustomEcomContext({ children }) {
         };
         setOrderData([...orderData, newOrder]);
         setCartData([]);
-        alert("Order placed successfully!");
+        handleShowModal();
+        setModalBody("Order placed successfully!")
     }
 
 
@@ -147,6 +178,11 @@ export function CustomEcomContext({ children }) {
     }
 
 
+    function handleSearchBarChange(e) {
+        setSerachBarInput(e.target.value.toLowerCase()); 
+    }
+
+    console.log("serachBar input is ", searchbarInput)
 
     useEffect(() => {
         loadProductData();
@@ -155,7 +191,7 @@ export function CustomEcomContext({ children }) {
             total = total + product.price * product.qty;
         }
         setTotalPrice(total);
-    }, [meterValue, checkBoxValue, rating, cartData])
+    }, [meterValue, checkBoxValue, rating, cartData, searchbarInput])
 
 
 
@@ -165,12 +201,15 @@ export function CustomEcomContext({ children }) {
             meterValue, meterChange, checkBoxChange,
             ratingChange, handleAddToCartClick, cartData,
             totalPrice, deleteCartData, handleOrder, orderData,
-            increaseQty, decreseQty, loading, setLoading
+            increaseQty, decreseQty, loading, setLoading,
+            modalBody, handleShowModal, handleCloseModal, showModal, handleConfirm, confirmType,
+            deleteIndex, handleSearchBarChange
         }}>
             {children}
         </EcomContext.Provider>
     )
 }
+
 
 
 

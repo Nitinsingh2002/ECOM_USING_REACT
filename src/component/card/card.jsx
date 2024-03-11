@@ -34,8 +34,14 @@ export const Cardd = () => {
                             </div>
 
 
-                            <Button variant="contained" endIcon={<ShoppingCartOutlinedIcon />} className="w-100" onClick={() => { handleAddToCartClick(item.id) }}  >   Add to cart</Button>
-                
+                            <Button variant="contained"
+                                endIcon={<ShoppingCartOutlinedIcon />}
+                                className="w-100"
+                                onClick={() => { handleAddToCartClick(item.id) }}
+                            >
+                                Add to cart
+                            </Button>
+
                         </Card.Body>
                     </Card>
 
